@@ -1,0 +1,72 @@
+<!--VALIDACIONES INTRINSECAS:
+ Son aquellas que no que el navegador puede realizar
+ mediante atributos html sin necesidad de realizar
+ una funcion en Js para cada comprobacion-->
+ <!-- required : Campo obligatorio
+      minlength: Minimo de caracteres
+      maxlength: Maximo de caracteres
+      min: Valor minimo
+      max: valor maximo
+      type= "email": Comprueba formato basico de correo
+      pattern = Comprueba un patron de texto -->
+      <!-- VALIDACIONES EN TIEMPO REAL
+      oninput: Validar mientras que el usuario escribe
+      onblur: Valida cuando el usuario sale de un campo
+      onchange: Detectar cambios en la carrera seleccionada
+      onsubmit: verifica el formulario
+      preventDefault(): Evita que el formulario recargue la pagina
+      checkvalidity(): Consultar validaciones intrinsecas de HTML
+      setCustomValidity(): Establecer mensajes personalizados de validacion
+      --->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta chatset ="UTF-8">
+        <title> REGISTRO DE ESTUDIANTES </title>
+        <link rel="stylesheet" href="estilos3.css">
+    </head>
+    <body>
+        <div class="contenedor">
+            <h1> SISTEMA DE REGISTRO DE ESTUDIANTES </h1>
+            <form id="formulario">
+                <label> Nombre Completo </label>
+                <input type ="text" id="nombre" minlength="3" maxlength="60">
+                <small id ="errorNombre"> </small>
+                <label> Correo Electronico  </label>
+                <input type="email" id="correo" required> 
+                <small id ="errorCorreo"> </small>
+                <label> Edad </label>
+                <input type="text" id="edad" inputmode="numeric" maxlength="2" pattern="[1-9] [0-9]?"> <!--- required min="18" max="80" step="1"-->
+                <small id ="errorEdad"> </small>
+                <label> Carrera </label>
+                <select id="carrera" required>
+                <option value=""> Seleccione una Carrera </option>
+                <option value="Ingenieria en Sistemas"> Ingenieria en Sistemas </option>
+                <option value="Marketing"> Marketing </option>
+                <option value="Derecho"> Derecho </option>
+                <option value="Administracion"> Administracion </option>
+                </select>
+                <small id ="errorCarrera"> </small>
+                <label> Nota final </label>
+                <input type="number" id="nota" required min="0" max="100" step="1">
+                <small id ="errorNota"> </small>
+                <button type="submit"> Registrar Estudiante </button>
+                </form>
+                <p id="mensaje"></p>
+                <h2> Estudiantes Registrados </h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th> Nombre </th>
+                            <th> Correo </th>
+                            <th> Edad </th>
+                            <th> Carrera </th>
+                            <th> Nota </th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaEstudiantes"></tbody>
+                </table>
+        </div>
+        <script src="script3.js"> </script>
+    </body>
+</html>
